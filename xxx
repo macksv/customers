@@ -1,0 +1,12 @@
+DRIVER = "SQL Server"
+SERVER_NAME="michael-HP-Notebook"
+DATABASE_NAME = "TestDB"
+conn_string = f"""
+	Driver={{{DRIVER}}};
+	Server={SERVER_NAME}
+	Database={DATABASE_NAME};
+	Trust_Connection=yes;
+	Uid=SA;
+	Pwd=GArsu1411;
+"""
+https://github.com/macksv/customers.git
