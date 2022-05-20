@@ -3,26 +3,17 @@ from tkinter import *
 from tkinter import ttk
 from tkcalendar import DateEntry
 import pyodbc
-#import database
+import db_connect
 import sys
 
 root = Tk()
 root.title("Hello World")
 root.geometry("400x400")
 
+conn_string = db_connect.get_connect_str()
 
-DRIVER = "{ODBC Driver 17 for SQL Server}"
-SERVER_NAME = "localhost"  # "michael-HP-Notebook"
-DATABASE_NAME = "TestDB"
-USER_NAME = "sa"
-PASSWORD = "Garsu1411"
 try:
-    conn = pyodbc.connect("DRIVER=" + DRIVER +
-                          ";SERVER=" + SERVER_NAME +
-                          ";DATABASE=" + DATABASE_NAME +
-                          ";UID=" + USER_NAME +
-                          ";PWD=" + PASSWORD)
-#    conn = pyodbc.connect(conn_string)
+    conn = pyodbc.connect(conn_string)
 
 except Exception as e:
     print(e)
@@ -63,7 +54,7 @@ def add_record():
     count = cursor.execute(sql_stmt, input_tuple).rowcount
     cursor.commit()
 
-    my_label = Label(root, text=str(count))
+    my_label = Label(root, text=str(count) + "new record added")
     my_label.grid(row=10, column=0, pady=10)
 
 
